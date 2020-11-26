@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,9 +32,11 @@ class LearningController extends AbstractController
         return $this->forward('App\Controller\LearningController::showMyName');
         }
         $name = $session->get('name');
+        $date = new DateTime();
         return $this->render('about-me.html.twig', [
             'controller_name' => 'LearningController',
-            'name' => $name
+            'name' => $name,
+            'date' => $date
         ]);
     }
     /**

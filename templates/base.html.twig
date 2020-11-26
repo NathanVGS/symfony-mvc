@@ -3,10 +3,37 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <style>
+            footer {
+                margin-top: 5em;
+            }
+        </style>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div class="d-flex mt-5">
+            <header class="row flex-column d-flex pt-5">
+                <div class="col-1">
+                    <nav class="navbar nav-pills flex-column sidenav">
+                        {% block menu %}
+                            <a class="nav-item nav-link active" href="{{ path('showMyName') }}">Home</a>
+                            <a href="{{ path('about-me') }}">About me</a>
+                        {% endblock %}
+                    </nav>
+                </div>
+            </header>
+            <section class="">
+                {% block body %}{% endblock %}
+                {% block quote %} {{ quote()|nl2br }} {% endblock %}
+            </section>
+        </div>
+
+
+        {#{% block footer %}{% endblock %}#}
+
+        <footer class="d-flex justify-content-center">&#169; Becode</footer>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

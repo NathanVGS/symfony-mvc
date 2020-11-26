@@ -1,8 +1,17 @@
 {% extends 'base.html.twig' %}
 
+{% block menu %}
+    {#{{ parent() }}#}
+    <a class="nav-item nav-link" href="{{ path('showMyName') }}">Home</a>
+    <a class="nav-item nav-link active" href="{{ path('about-me') }}">About me</a>
+        <div class="nav-item">{{ date|format_date(pattern="d/M/y") }}</div>
+    <div class="nav-item">{{ date|format_date(pattern="M/d/y") }}</div>
+    <div class="nav-item">{{ date|format_date(pattern="y/M/d") }}</div>
+{% endblock %}
+
+
 {% block body %}
     <h1>Hello {{ name }}</h1>
-    <a href="{{ path('showMyName') }}">Go to homepage</a>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque nobis porro quidem soluta.
     Alias consequuntur, cumque dicta eius exercitationem minima molestiae molestias nemo repellat sapiente sed tempora ut velit voluptates!</p>
 {% endblock %}
